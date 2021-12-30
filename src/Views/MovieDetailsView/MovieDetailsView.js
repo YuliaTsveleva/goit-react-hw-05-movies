@@ -34,7 +34,9 @@ export default function MovieDetailsView() {
       {movie && (
         <>
           <div className={s.MovieDetails}>
-            <h1>{movie.original_title ?? movie.original_name}</h1>{' '}
+            <h1 className={s.MovieName}>
+              {movie.original_title ?? movie.original_name}
+            </h1>
             <div className={s.Wrapper}>
               {movie.poster_path || movie.backdrop_path ? (
                 <img

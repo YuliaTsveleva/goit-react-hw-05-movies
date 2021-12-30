@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import api from '../../Services/ApiService';
 import Gallery from '../../Components/Gallery/Gallery';
-// import s from './Homepage.module.css';
+import s from './HomepageView.module.css';
 import Loader from '../../Components/Loader/Loader';
 
 export default function Homepage() {
@@ -19,6 +19,7 @@ export default function Homepage() {
 
   return (
     <>
+      <h1 className={s.Trending}>Trending today</h1>
       <Gallery movies={movies} />
       {loading && <Loader />}
     </>
