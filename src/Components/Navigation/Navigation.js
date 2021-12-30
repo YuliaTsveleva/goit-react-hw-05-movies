@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css';
 import { BiHomeAlt } from 'react-icons/bi';
-import { BiMoviePlay } from 'react-icons/bi';
+import { BiFilm } from 'react-icons/bi';
 
 export default function Navigation() {
   return (
@@ -11,7 +11,7 @@ export default function Navigation() {
       </NavLink>
 
       <NavLink to="/movies" className={s.Link} activeClassName={s.ActiveLink}>
-        <BiMoviePlay size="30" />
+        <BiFilm size="30" />
       </NavLink>
     </nav>
   );

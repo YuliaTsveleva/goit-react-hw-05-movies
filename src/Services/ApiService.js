@@ -39,7 +39,37 @@ function fetchMovieById(movieId) {
       if (response.status === 200) return response.json();
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
+      return response;
+    })
+    .catch(error => console.log(error));
+}
+
+function fetchCastById(movieId) {
+  return fetch(
+    `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`,
+  )
+    .then(response => {
+      if (response.status === 200) return response.json();
+    })
+    .then(response => {
+      // console.log(response);
+      return response;
+    })
+    .catch(error => console.log(error));
+}
+
+//api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
+
+function fetchReviewsById(movieId) {
+  return fetch(
+    `${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`,
+  )
+    .then(response => {
+      if (response.status === 200) return response.json();
+    })
+    .then(response => {
+      // console.log(response);
       return response;
     })
     .catch(error => console.log(error));
@@ -49,5 +79,7 @@ const api = {
   fetchTrendingMovies,
   fetchSearchByName,
   fetchMovieById,
+  fetchCastById,
+  fetchReviewsById,
 };
 export default api;

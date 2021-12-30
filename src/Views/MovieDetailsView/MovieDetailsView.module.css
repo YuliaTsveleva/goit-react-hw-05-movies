@@ -1,6 +1,7 @@
 .Wrapper {
   display: flex;
   max-width: 600px;
+  margin: 0 auto;
 }
 
 .DescrWrapper {
@@ -17,7 +18,7 @@
 }
 
 .MovieImage {
-     height: 400px;
+  height: 400px;
 }
 
 .Icon {
@@ -25,3 +26,12 @@
   fill: rgb(50, 77, 199);
 }
 
+.ActiveLink {
+  color: rgb(50, 77, 199);
+}
+
+.LinksList {
+  display: flex;
+  padding: 0;
+  justify-content: end;
+}

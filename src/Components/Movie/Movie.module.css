@@ -42,7 +42,7 @@
   padding-right: 5px;
 }
 
-.NoImageIcon{
+.NoImageIcon {
   padding: 30%;
-  fill:  rgb(50, 77, 199);
+  fill: rgba(0, 0, 0, 0.3);
 }
