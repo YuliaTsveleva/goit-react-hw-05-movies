@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import s from './Movie.module.css';
 import PropTypes from 'prop-types';
 import { BiLike } from 'react-icons/bi';
@@ -6,10 +7,17 @@ import { Link /*useRouteMatch*/ } from 'react-router-dom';
 
 export default function Movie({ id, title, src, date, vote }) {
   // const { url } = useRouteMatch();
+  const location = useLocation();
+
   return (
     <li className={s.MovieItem}>
       {/* <Link to={`${url}/${id}`}> */}
-      <Link to={`movies/${id}`}>
+      <Link
+        to={{
+          pathname: `movies/${id}`,
+          state: { from: location },
+        }}
+      >
         <h2 className={s.MovieTitle}>{title}</h2>
         {src ? (
           <img

@@ -1,18 +1,33 @@
 import { useState, useEffect } from 'react';
-import { useParams, NavLink, Route, useRouteMatch } from 'react-router-dom';
+import {
+  useParams,
+  NavLink,
+  Route,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 import api from '../../Services/ApiService';
-import { BiLowVision, BiGroup, BiMessageAltDetail } from 'react-icons/bi';
+import {
+  BiLowVision,
+  BiGroup,
+  BiMessageAltDetail,
+  BiArrowToLeft,
+} from 'react-icons/bi';
 import s from './MovieDetailsView.module.css';
 import Loader from '../../Components/Loader/Loader';
 import Cast from '../../Components/Cast/Cast';
 import Reviews from '../../Components/Reviews/Reviews';
 
 export default function MovieDetailsView() {
+  const history = useHistory();
+  const location = useLocation();
   const { url } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
   // console.log('url from useRouteMatch from MovieDetailsView', url);
+  console.log('location from MovieDetailsView', location);
 
   useEffect(() => {
     api.fetchMovieById(movieId).then(movie => {
@@ -25,6 +40,10 @@ export default function MovieDetailsView() {
 
   // console.log('movie from state in details page', movie);
 
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? '/movies');
+  };
+
   const date = movie.release_date ?? movie.first_air_date;
 
   return (
@@ -33,6 +52,9 @@ export default function MovieDetailsView() {
       {loading && <Loader />}
       {movie && (
         <>
+          <button className={s.BackButton} onClick={onGoBack}>
+            <BiArrowToLeft size="30" />
+          </button>
           <div className={s.MovieDetails}>
             <h1 className={s.MovieName}>
               {movie.original_title ?? movie.original_name}
