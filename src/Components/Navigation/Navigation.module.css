@@ -1,0 +1,14 @@
+.Link{
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    color:black;
+    cursor: pointer;
+}
+
+.ActiveLink{
+    composes: Link;
+    color: rgb(50, 77, 199);
+}

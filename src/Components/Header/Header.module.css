@@ -1,0 +1,8 @@
+.Header {
+  display: flex;
+}
+
+.HeaderLink {
+  padding: 0 10px;
+  cursor: pointer;
+}

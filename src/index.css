@@ -1,6 +1,4 @@
-lines (187 sloc)  3.82 KB
-   
-html {
+lines (187 sloc) 3.82 KB html {
   box-sizing: border-box;
   width: 100vw;
   overflow-x: hidden;
@@ -10,6 +8,11 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color:black;
 }
 
 body {
