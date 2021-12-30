@@ -4,6 +4,7 @@ import Container from './Components/Container/Container';
 import Header from './Components/Header/Header';
 import HomepageView from './Views/Homepage/HomepageView';
 import SearchbarView from './Views/SearchbarView/SearchbarView';
+import MovieDetailsView from './Views/MovieDetailsView/MovieDetailsView';
 import NotFoundView from './Views/NotFoundView/NotFoundView';
 import { ToastContainer } from 'react-toastify';
 
@@ -16,8 +17,11 @@ export default function App() {
           <Route path="/" exact>
             <HomepageView />
           </Route>
-          <Route path="/movie">
+          <Route path="/movies" exact>
             <SearchbarView />
+          </Route>
+          <Route path="/movies/:movieId">
+            <MovieDetailsView />
           </Route>
           <Route>
             <NotFoundView />

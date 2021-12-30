@@ -1,0 +1,19 @@
+
+.ButtonUp {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: inline-block;
+  padding: 5px 0;
+  font-weight: 500;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  margin-top: 10px;
+}
+
+.ButtonUp:hover {
+  color: rgb(50, 77, 199);
+}

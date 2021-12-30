@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import s from './Button.module.css';
 import { BiChevronsDown } from 'react-icons/bi';
 
@@ -14,6 +14,6 @@ function Button({ loadMore }) {
 }
 export default Button;
 
-// Button.propTypes = {
-//   loadMore: PropTypes.func,
-// };
+Button.propTypes = {
+  loadMore: PropTypes.func,
+};

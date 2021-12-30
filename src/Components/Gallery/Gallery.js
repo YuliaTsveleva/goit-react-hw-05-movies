@@ -1,16 +1,17 @@
 import s from './Gallery.module.css';
 import PropTypes from 'prop-types';
 import Movie from '../Movie/Movie';
+import { nanoid } from 'nanoid';
+// import { Link, useRouteMatch } from 'react-router-dom';
 
-export default function Gallery({ movies }) {
+export default function Gallery({ movies, loading }) {
   //   console.log('movies from Gallery', movies);
-
   return (
     <ul className={s.Gallery}>
       {movies &&
         movies.map(movie => (
           <Movie
-            key={movie.id}
+            key={nanoid()}
             id={movie.id}
             title={movie.original_title ?? movie.original_name}
             src={movie.poster_path ?? movie.backdrop_path}
@@ -24,4 +25,5 @@ export default function Gallery({ movies }) {
 
 Gallery.propTypes = {
   movies: PropTypes.array,
+  loading: PropTypes.bool,
 };

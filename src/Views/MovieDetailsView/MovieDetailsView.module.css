@@ -1,0 +1,27 @@
+.Wrapper {
+  display: flex;
+  max-width: 600px;
+}
+
+.DescrWrapper {
+  text-align: start;
+  padding-left: 10px;
+}
+
+.JenresList {
+  padding: 0;
+}
+
+.DescrTitle {
+  font-weight: 700;
+}
+
+.MovieImage {
+     height: 400px;
+}
+
+.Icon {
+  padding: 0 50px;
+  fill: rgb(50, 77, 199);
+}
+

@@ -6,20 +6,34 @@ import FoundMoviesView from '../FoundMoviesView/FoundMoviesView';
 import api from '../../Services/ApiService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../../Components/Loader/Loader';
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
   const [movieName, setMovieName] = useState('');
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!query) return;
     // console.log(query);
-    api.fetchSearchByName(query, page).then(results => {
-      // console.log('results from foundmovies', results);
-      setMovies(prev => [...prev, ...results]);
-      return results;
+    setLoading(true);
+    api.fetchSearchByName(query, page).then(data => {
+      // console.log('results from searchbar', data.results);
+      if (!data.results) {
+        setLoading(false);
+        return;
+      }
+      setMovies(prev => [...prev, ...data.results]);
+      setTotal(data.total);
+      setLoading(false);
+      // console.log(movies.length);
+      if ((page === 1 && data.results.length < 20) || page === data.total) {
+        return toast.warning(`It's all movies matching your request!`);
+      }
+      return data.results;
     });
   }, [query, page]);
 
@@ -43,6 +57,7 @@ export default function SearchBar() {
 
   const loadMore = () => {
     setPage(prev => prev + 1);
+    setLoading(true);
     toSmoothScroll();
   };
 
@@ -54,6 +69,8 @@ export default function SearchBar() {
       });
     }, 1000);
   };
+
+  const isAvailableMore = page < total;
 
   return (
     <>
@@ -74,7 +91,15 @@ export default function SearchBar() {
           onChange={handleNameChange}
         />
       </form>
-      <FoundMoviesView movies={movies} loadMore={loadMore} />
+      {/* {movies.length > 0 && ( */}
+      <FoundMoviesView
+        movies={movies}
+        loadMore={loadMore}
+        isAvailableMore={isAvailableMore}
+        loading={loading}
+      />
+      {/* )} */}
+      {loading && <Loader />}
     </>
   );
 }

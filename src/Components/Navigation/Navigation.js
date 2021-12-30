@@ -10,7 +10,7 @@ export default function Navigation() {
         <BiHomeAlt size="30" />
       </NavLink>
 
-      <NavLink to="/movie" className={s.Link} activeClassName={s.ActiveLink}>
+      <NavLink to="/movies" className={s.Link} activeClassName={s.ActiveLink}>
         <BiMoviePlay size="30" />
       </NavLink>
     </nav>
