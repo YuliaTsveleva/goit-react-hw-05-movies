@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   useParams,
   NavLink,
@@ -27,7 +27,8 @@ export default function MovieDetailsView() {
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
   // console.log('url from useRouteMatch from MovieDetailsView', url);
-  console.log('location from MovieDetailsView', location);
+  // console.log('location from MovieDetailsView', location);
+  const startLocation = useRef(location);
 
   useEffect(() => {
     api.fetchMovieById(movieId).then(movie => {
@@ -41,14 +42,26 @@ export default function MovieDetailsView() {
   // console.log('movie from state in details page', movie);
 
   const onGoBack = () => {
-    history.push(location?.state?.from ?? '/movies');
+    // console.log('history from goback', history);
+    // console.log('location from goback', location);
+    // if (location) history.push(location?.state?.from ?? '/');
+    // console.log('location from goback after push', location);
+    if (startLocation.current.state) {
+      const search = startLocation.current.state.from.search;
+      const pathname = startLocation.current.state.from.pathname;
+      history.push(search ? pathname + search : pathname);
+    }
   };
 
   const date = movie.release_date ?? movie.first_air_date;
 
+  // console.log(
+  //   'startLocation.current.state from details bafore return',
+  //   startLocation,
+  // );
+
   return (
     <>
-      {/* <p>{`Movie ${movieId}`}</p> */}
       {loading && <Loader />}
       {movie && (
         <>

@@ -10,6 +10,13 @@ export default function Cast() {
   //   console.log('movieId from Cast', movieId);
   const [cast, setCast] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const location = useLocation();
+  // const history = useHistory();
+
+  // console.log('prop from in cast', from);
+
+  // console.log('location from cast', location);
+  // console.log('history from cast', history);
 
   useEffect(() => {
     api.fetchCastById(movieId).then(data => {
