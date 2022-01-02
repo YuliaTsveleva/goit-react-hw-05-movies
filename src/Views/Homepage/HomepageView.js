@@ -10,7 +10,6 @@ export default function Homepage() {
 
   useEffect(() => {
     api.fetchTrendingMovies().then(results => {
-      // console.log('results from homepage', results);
       setMovies(results);
       setLoading(false);
       return results;

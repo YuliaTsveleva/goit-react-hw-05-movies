@@ -8,7 +8,6 @@ function fetchTrendingMovies() {
   return fetch(`${BASE_URL}trending/all/day?api_key=${API_KEY}`)
     .then(response => response.json())
     .then(response => {
-      //   console.log('response from fetch trending', response);
       return response.results;
     })
     .catch(error => console.log(error));
@@ -20,9 +19,6 @@ function fetchSearchByName(query, page) {
   )
     .then(response => response.json())
     .then(response => {
-      // console.log('response from fetch searching', response);
-      // console.log('response.total_pages', response.total_pages);
-      // console.log('response.results', response.results);
       if (response.total_results === 0) {
         return toast.error('No movies matching your request!');
       }
@@ -39,7 +35,6 @@ function fetchMovieById(movieId) {
       if (response.status === 200) return response.json();
     })
     .then(response => {
-      // console.log(response);
       return response;
     })
     .catch(error => console.log(error));
@@ -53,13 +48,10 @@ function fetchCastById(movieId) {
       if (response.status === 200) return response.json();
     })
     .then(response => {
-      // console.log(response);
       return response;
     })
     .catch(error => console.log(error));
 }
-
-//api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
 
 function fetchReviewsById(movieId) {
   return fetch(
@@ -69,7 +61,6 @@ function fetchReviewsById(movieId) {
       if (response.status === 200) return response.json();
     })
     .then(response => {
-      // console.log(response);
       return response;
     })
     .catch(error => console.log(error));

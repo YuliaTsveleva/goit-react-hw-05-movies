@@ -2,10 +2,7 @@ import s from './Gallery.module.css';
 import PropTypes from 'prop-types';
 import Movie from '../Movie/Movie';
 import { nanoid } from 'nanoid';
-// import { Link, useRouteMatch } from 'react-router-dom';
-
-export default function Gallery({ movies, loading }) {
-  //   console.log('movies from Gallery', movies);
+export default function Gallery({ movies }) {
   return (
     <ul className={s.Gallery}>
       {movies &&
@@ -25,5 +22,4 @@ export default function Gallery({ movies, loading }) {
 
 Gallery.propTypes = {
   movies: PropTypes.array,
-  loading: PropTypes.bool,
 };

@@ -7,20 +7,15 @@ import Loader from '../Loader/Loader';
 
 export default function Reviews() {
   const { movieId } = useParams();
-  //   console.log('movieId from Reviews', movieId);
   const [reviews, setReviews] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api.fetchReviewsById(movieId).then(data => {
-      //   console.log('data', data);
-
       setReviews(data.results);
       setLoading(false);
     });
   }, [movieId]);
-
-  //   console.log('reviews after useEffect', reviews);
 
   return (
     <>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 import s from './SearchbarView.module.css';
 import { BiSearchAlt } from 'react-icons/bi';
 import FoundMoviesView from '../FoundMoviesView/FoundMoviesView';
@@ -21,16 +20,11 @@ export default function SearchBar() {
 
   useEffect(() => {
     if (!location.search && !query) return;
-
-    // const x1 = location.search.slice(7);
-    // console.log('x1', x1);
     if (location.search) {
       setQuery(location.search.slice(7));
     }
-    // console.log(query);
     setLoading(true);
     api.fetchSearchByName(query, page).then(data => {
-      // console.log('results from searchbar', data.results);
       if (!data.results) {
         setLoading(false);
         return;
@@ -38,7 +32,6 @@ export default function SearchBar() {
       setMovies(prev => [...prev, ...data.results]);
       setTotal(data.total);
       setLoading(false);
-      // console.log(movies.length);
       if ((page === 1 && data.results.length < 20) || page === data.total) {
         return toast.warning(`It's all movies matching your request!`);
       }
@@ -52,8 +45,6 @@ export default function SearchBar() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(movieName);
-    // console.log(query);
     if (movieName.toLowerCase().trim() === '') {
       return toast.warning('Enter your request please!');
     }
@@ -93,7 +84,6 @@ export default function SearchBar() {
             <BiSearchAlt size={30} />
           </span>
         </button>
-
         <input
           className={s.SearchFormInput}
           type="text"
@@ -104,14 +94,12 @@ export default function SearchBar() {
           onChange={handleNameChange}
         />
       </form>
-      {/* {movies.length > 0 && ( */}
       <FoundMoviesView
         movies={movies}
         loadMore={loadMore}
         isAvailableMore={isAvailableMore}
         loading={loading}
       />
-      {/* )} */}
       {loading && <Loader />}
     </>
   );

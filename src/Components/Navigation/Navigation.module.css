@@ -1,19 +1,19 @@
-.Link{
-    display: inline-block;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 500;
-    font-size: 16px;
-    color:black;
-    cursor: pointer;
+.Link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
 }
 
-.Link:hover, .Link:focus{
-    color: rgb(50, 77, 199);
+.Link:hover,
+.Link:focus {
+  color: rgb(50, 77, 199);
 }
 
-.ActiveLink{
-    composes: Link;
-    color: rgb(50, 77, 199);
+.ActiveLink {
+  composes: Link;
+  color: rgb(50, 77, 199);
 }
-

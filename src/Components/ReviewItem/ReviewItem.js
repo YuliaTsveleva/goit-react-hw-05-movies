@@ -4,11 +4,8 @@ import s from './ReviewItem.module.css';
 
 export default function ReviewItem({ author, text, number }) {
   const [review, setReview] = useState(text.substr(0, 500));
-  //   console.log(text.length);
-  //   console.log(number);
   const readMore = e => {
     setReview(text);
-    // console.dir(e.target);
     e.target.disabled = true;
     e.target.classList.add('visually-hidden');
   };
@@ -37,4 +34,5 @@ export default function ReviewItem({ author, text, number }) {
 ReviewItem.propTypes = {
   author: PropTypes.string,
   text: PropTypes.string,
+  number: PropTypes.number,
 };

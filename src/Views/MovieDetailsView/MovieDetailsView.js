@@ -8,12 +8,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 import api from '../../Services/ApiService';
-import {
-  // BiLowVision,
-  BiGroup,
-  BiMessageAltDetail,
-  BiArrowToLeft,
-} from 'react-icons/bi';
+import { BiGroup, BiMessageAltDetail, BiArrowToLeft } from 'react-icons/bi';
 import s from './MovieDetailsView.module.css';
 import Loader from '../../Components/Loader/Loader';
 import Cast from '../../Components/Cast/Cast';
@@ -27,44 +22,26 @@ export default function MovieDetailsView() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
-  // console.log('url from useRouteMatch from MovieDetailsView', url);
-  // console.log('location from MovieDetailsView', location);
   const startLocation = useRef(location);
 
   useEffect(() => {
     api.fetchMovieById(movieId).then(movie => {
-      // console.log('data from details page', movie);
       setMovie(movie);
       setLoading(false);
-      //   return setMovie({});
     });
   }, [movieId]);
 
-  // console.log('movie from state in details page', movie);
-
   const onGoBack = () => {
-    // console.log('history from goback', history);
-    // console.log('location from goback', location);
-    // if (location) history.push(location?.state?.from ?? '/');
-    // console.log('location from goback after push', location);
     if (startLocation.current.state) {
       const search = startLocation.current.state.from.search;
       const pathname = startLocation.current.state.from.pathname;
       history.push(search ? pathname + search : pathname);
     } else {
-      // console.log(startLocation);
       history.push('/');
     }
   };
 
   const date = movie.release_date ?? movie.first_air_date;
-
-  // console.log(
-  //   'startLocation.current.state from details bafore return',
-  //   startLocation,
-  // );
-
-  // const isSrc = movie.poster_path || movie.backdrop_path;
 
   return (
     <>
@@ -79,7 +56,6 @@ export default function MovieDetailsView() {
               {movie.original_title ?? movie.original_name}
             </h1>
             <div className={s.Wrapper}>
-              {/* {movie.poster_path || movie.backdrop_path ? ( */}
               <img
                 id={movieId}
                 src={
@@ -91,9 +67,7 @@ export default function MovieDetailsView() {
                 className={movie.poster_path ? s.MovieImage : s.NoImage}
                 loading="lazy"
               />
-              {/* ) : (
-                <BiLowVision size="200" className={s.Icon} />
-              )} */}
+
               <div className={s.DescrWrapper}>
                 <p>
                   <span className={s.DescrTitle}>Overview: </span>
