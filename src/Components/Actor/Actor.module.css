@@ -1,5 +1,7 @@
 .ActorItem {
   position: relative;
+display: flex;
+align-items: center;
 }
 
 .ActorName {
@@ -14,7 +16,3 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.Icon {
-  margin-top: 50px;
-  fill: rgba(0, 0, 0, 0.3);
-}

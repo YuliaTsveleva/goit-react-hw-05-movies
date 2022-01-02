@@ -8,6 +8,9 @@
 .MovieItem:hover {
   transform: scale(1.02);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  height:340px;
 }
 
 .MovieTitle {
@@ -24,6 +27,10 @@
 
 .MovieImage{
   height:340px;
+ }
+
+ .NoImage{
+   padding-top: 40px;
  }
 
 .Description {
