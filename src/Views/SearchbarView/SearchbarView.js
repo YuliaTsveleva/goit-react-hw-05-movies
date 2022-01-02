@@ -44,7 +44,7 @@ export default function SearchBar() {
       }
       return data.results;
     });
-  }, [query, page]);
+  }, [query, page, location.search]);
 
   const handleNameChange = e => {
     setMovieName(e.currentTarget.value);
