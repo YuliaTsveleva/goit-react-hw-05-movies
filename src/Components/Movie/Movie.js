@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import s from './Movie.module.css';
 import PropTypes from 'prop-types';
 import { BiLike } from 'react-icons/bi';
-import { BiLowVision } from 'react-icons/bi';
+// import { BiLowVision } from 'react-icons/bi';
 import { Link /*useRouteMatch*/ } from 'react-router-dom';
 import noImage from '../../images/no-image.jpg';
 

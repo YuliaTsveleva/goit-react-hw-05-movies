@@ -50,6 +50,9 @@ export default function MovieDetailsView() {
       const search = startLocation.current.state.from.search;
       const pathname = startLocation.current.state.from.pathname;
       history.push(search ? pathname + search : pathname);
+    } else {
+      // console.log(startLocation);
+      history.push('/');
     }
   };
 
