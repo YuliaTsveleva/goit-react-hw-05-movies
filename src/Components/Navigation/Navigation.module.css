@@ -8,7 +8,12 @@
     cursor: pointer;
 }
 
+.Link:hover, .Link:focus{
+    color: rgb(50, 77, 199);
+}
+
 .ActiveLink{
     composes: Link;
     color: rgb(50, 77, 199);
 }
+

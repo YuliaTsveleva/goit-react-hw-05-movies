@@ -121,13 +121,18 @@ export default function MovieDetailsView() {
                 )}
                 <ul className={s.LinksList}>
                   <li>
-                    <NavLink to={`${url}/cast`} activeClassName={s.ActiveLink}>
+                    <NavLink
+                      to={`${url}/cast`}
+                      className={s.Link}
+                      activeClassName={s.ActiveLink}
+                    >
                       <BiGroup size="30" />
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to={`${url}/reviews`}
+                      className={s.Link}
                       activeClassName={s.ActiveLink}
                     >
                       <BiMessageAltDetail size="30" />
