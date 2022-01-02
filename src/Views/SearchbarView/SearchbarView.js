@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import s from './SearchbarView.module.css';
 import { BiSearchAlt } from 'react-icons/bi';
@@ -15,9 +16,17 @@ export default function SearchBar() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
-    if (!query) return;
+    if (!location.search && !query) return;
+
+    // const x1 = location.search.slice(7);
+    // console.log('x1', x1);
+    if (location.search) {
+      setQuery(location.search.slice(7));
+    }
     // console.log(query);
     setLoading(true);
     api.fetchSearchByName(query, page).then(data => {
@@ -49,10 +58,14 @@ export default function SearchBar() {
       return toast.warning('Enter your request please!');
     }
     setQuery(movieName);
-
     setPage(1);
     setMovies([]);
     setMovieName('');
+
+    history.push({
+      ...location,
+      search: `query=${movieName}`,
+    });
   };
 
   const loadMore = () => {
