@@ -21,10 +21,15 @@
   height: 400px;
 }
 
+/* 
 .Icon {
   padding: 0 50px;
   fill: rgb(50, 77, 199);
-}
+} */
+
+.NoImage{
+  height:300px;
+  }
 
 .ActiveLink {
   color: rgb(50, 77, 199);

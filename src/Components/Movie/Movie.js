@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { BiLike } from 'react-icons/bi';
 // import { BiLowVision } from 'react-icons/bi';
 import { Link /*useRouteMatch*/ } from 'react-router-dom';
-import noImage from '../../images/no-image.jpg';
+import noImage from '../../images/no-image.svg';
 
 export default function Movie({ id, title, src, date, vote }) {
   // const { url } = useRouteMatch();
@@ -26,6 +26,7 @@ export default function Movie({ id, title, src, date, vote }) {
           src={src ? `https://image.tmdb.org/t/p/w500${src}` : noImage}
           alt={title}
           className={src ? s.MovieImage : s.NoImage}
+          loading="lazy"
         />
         {/* ) : (
           <BiLowVision size="100" className={s.NoImageIcon} />

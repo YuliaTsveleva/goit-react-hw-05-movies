@@ -4,8 +4,6 @@ import s from './Button.module.css';
 import { BiChevronsDown } from 'react-icons/bi';
 
 function Button({ loadMore }) {
-  // console.log(loadMore);
-
   return (
     <button id="loadMore" onClick={loadMore} type="button" className={s.Button}>
       <BiChevronsDown size="40" />

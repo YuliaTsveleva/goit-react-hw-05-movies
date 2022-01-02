@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import api from '../../Services/ApiService';
 import {
-  BiLowVision,
+  // BiLowVision,
   BiGroup,
   BiMessageAltDetail,
   BiArrowToLeft,
@@ -18,6 +18,7 @@ import s from './MovieDetailsView.module.css';
 import Loader from '../../Components/Loader/Loader';
 import Cast from '../../Components/Cast/Cast';
 import Reviews from '../../Components/Reviews/Reviews';
+import noImage from '../../images/no-image.svg';
 
 export default function MovieDetailsView() {
   const history = useHistory();
@@ -63,6 +64,8 @@ export default function MovieDetailsView() {
   //   startLocation,
   // );
 
+  // const isSrc = movie.poster_path || movie.backdrop_path;
+
   return (
     <>
       {loading && <Loader />}
@@ -76,18 +79,21 @@ export default function MovieDetailsView() {
               {movie.original_title ?? movie.original_name}
             </h1>
             <div className={s.Wrapper}>
-              {movie.poster_path || movie.backdrop_path ? (
-                <img
-                  id={movieId}
-                  src={`https://image.tmdb.org/t/p/w500${
-                    movie.poster_path ?? movie.backdrop_path
-                  }`}
-                  alt={movie.original_title ?? movie.original_name}
-                  className={s.MovieImage}
-                />
-              ) : (
+              {/* {movie.poster_path || movie.backdrop_path ? ( */}
+              <img
+                id={movieId}
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : noImage
+                }
+                alt={movie.original_title ?? movie.original_name}
+                className={movie.poster_path ? s.MovieImage : s.NoImage}
+                loading="lazy"
+              />
+              {/* ) : (
                 <BiLowVision size="200" className={s.Icon} />
-              )}
+              )} */}
               <div className={s.DescrWrapper}>
                 <p>
                   <span className={s.DescrTitle}>Overview: </span>
