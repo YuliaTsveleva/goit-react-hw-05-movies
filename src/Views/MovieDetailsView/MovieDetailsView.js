@@ -8,7 +8,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 import api from '../../Services/ApiService';
-import { BiGroup, BiMessageAltDetail, BiArrowToLeft } from 'react-icons/bi';
+import { BiGroup, BiMessageAltDetail, BiArrowFromBottom } from 'react-icons/bi';
 import s from './MovieDetailsView.module.css';
 import Loader from '../../Components/Loader/Loader';
 import Cast from '../../Components/Cast/Cast';
@@ -31,11 +31,18 @@ export default function MovieDetailsView() {
     });
   }, [movieId]);
 
+  let label;
+
+  if (startLocation.current.state && startLocation.current.state.from.search) {
+    startLocation.current.state.from.label = 'search';
+    label = startLocation.current.state.from.label;
+  }
+
   const onGoBack = () => {
     if (startLocation.current.state) {
       const search = startLocation.current.state.from.search;
-      const pathname = startLocation.current.state.from.pathname;
-      history.push(search ? pathname + search : pathname);
+      // const pathname = startLocation.current.state.from.pathname;
+      history.push(search ? '/movies' + search : '/');
     } else {
       history.push('/');
     }
@@ -48,8 +55,16 @@ export default function MovieDetailsView() {
       {loading && <Loader />}
       {movie && (
         <>
-          <button className={s.BackButton} onClick={onGoBack}>
-            <BiArrowToLeft size="30" />
+          <button
+            className={
+              label && label === 'search' ? s.BackToSearch : s.BackButton
+            }
+            onClick={onGoBack}
+          >
+            <BiArrowFromBottom
+              size="30"
+              // className={label === 'search' ? s.BackToSearch : s.BackToHome}
+            />
           </button>
           <div className={s.MovieDetails}>
             <h1 className={s.MovieName}>
@@ -102,7 +117,10 @@ export default function MovieDetailsView() {
                 <ul className={s.LinksList}>
                   <li>
                     <NavLink
-                      to={`${url}/cast`}
+                      to={{
+                        pathname: `${url}/cast`,
+                        state: { from: location },
+                      }}
                       className={s.Link}
                       activeClassName={s.ActiveLink}
                     >
@@ -111,7 +129,10 @@ export default function MovieDetailsView() {
                   </li>
                   <li>
                     <NavLink
-                      to={`${url}/reviews`}
+                      to={{
+                        pathname: `${url}/reviews`,
+                        state: { from: location },
+                      }}
                       className={s.Link}
                       activeClassName={s.ActiveLink}
                     >
