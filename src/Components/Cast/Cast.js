@@ -6,7 +6,8 @@ import s from './Cast.module.css';
 import Loader from '../Loader/Loader';
 
 export default function Cast() {
-  const { movieId } = useParams();
+  const { slug } = useParams();
+  const movieId = slug.match(/[a-z0-9]+$/)[0];
   const [cast, setCast] = useState(null);
   const [loading, setLoading] = useState(true);
 

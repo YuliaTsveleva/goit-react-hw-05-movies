@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/movies" exact>
             <SearchbarView />
           </Route>
-          <Route path="/movies/:movieId">
+          <Route path="/movies/:slug">
             <MovieDetailsView />
           </Route>
           <Route>

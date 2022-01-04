@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { BiLike } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import noImage from '../../images/no-image.svg';
+import slugify from 'slugify';
 
 export default function Movie({ id, title, src, date, vote }) {
   const location = useLocation();
@@ -12,7 +13,10 @@ export default function Movie({ id, title, src, date, vote }) {
     <li className={s.MovieItem}>
       <Link
         to={{
-          pathname: `movies/${id}`,
+          pathname: `movies/${slugify(`${title} ${id}`, {
+            lower: true,
+            strict: true,
+          })}`,
           state: { from: location },
         }}
       >

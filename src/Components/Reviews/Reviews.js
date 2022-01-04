@@ -6,7 +6,8 @@ import ReviewItem from '../../Components/ReviewItem/ReviewItem';
 import Loader from '../Loader/Loader';
 
 export default function Reviews() {
-  const { movieId } = useParams();
+  const { slug } = useParams();
+  const movieId = slug.match(/[a-z0-9]+$/)[0];
   const [reviews, setReviews] = useState();
   const [loading, setLoading] = useState(true);
 

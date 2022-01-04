@@ -19,7 +19,8 @@ export default function MovieDetailsView() {
   const history = useHistory();
   const location = useLocation();
   const { url } = useRouteMatch();
-  const { movieId } = useParams();
+  const { slug } = useParams();
+  const movieId = slug.match(/[a-z0-9]+$/)[0];
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
   const startLocation = useRef(location);
@@ -143,10 +144,10 @@ export default function MovieDetailsView() {
               </div>
             </div>
           </div>
-          <Route path="/movies/:movieId/cast">
+          <Route path="/movies/:slug/cast">
             <Cast />
           </Route>
-          <Route path="/movies/:movieId/reviews">
+          <Route path="/movies/:slug/reviews">
             <Reviews />
           </Route>
         </>
