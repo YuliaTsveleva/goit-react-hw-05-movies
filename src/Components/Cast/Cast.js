@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import s from './Cast.module.css';
 import api from '../../Services/ApiService';
 import Actor from '../Actor/Actor';
-import s from './Cast.module.css';
 import Loader from '../Loader/Loader';
 
 export default function Cast() {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import s from './HomepageView.module.css';
 import api from '../../Services/ApiService';
 import Gallery from '../../Components/Gallery/Gallery';
-import s from './HomepageView.module.css';
 import Loader from '../../Components/Loader/Loader';
 
 export default function Homepage() {

@@ -1,7 +1,8 @@
 import s from './Gallery.module.css';
 import PropTypes from 'prop-types';
-import Movie from '../Movie/Movie';
 import { nanoid } from 'nanoid';
+import Movie from '../Movie/Movie';
+
 export default function Gallery({ movies }) {
   return (
     <ul className={s.Gallery}>

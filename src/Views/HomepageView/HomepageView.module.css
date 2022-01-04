@@ -1,71 +1,4 @@
-.Wrapper {
-  display: flex;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.DescrWrapper {
-  text-align: justify;
-  padding-left: 10px;
-}
-
-.JenresList {
-  padding: 0;
-}
-
-.DescrTitle {
-  font-weight: 700;
-}
-
-.MovieImage {
-  height: 400px;
-}
-
-.NoImage {
-  height: 300px;
-}
-
-.ActiveLink {
-  color: rgb(50, 77, 199);
-}
-
-.LinksList {
-  display: flex;
-  padding: 0;
-  justify-content: flex-end;
-  list-style: none;
-}
-
-.JenresList {
-  list-style: none;
-}
-
-.BackButton {
-  display: block;
-  margin-left: 3px;
-  font-weight: 500;
-  font-size: 16px;
-  color: black;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  margin-top: 10px;
-}
-
-.BackToSearch {
-  composes: BackButton;
-  margin-left: 53px;
-}
-
-.ActiveLink,
-.Link:hover,
-.Link:focus,
-.BackButton:hover,
-.BackButton:focus {
-  color: rgb(50, 77, 199);
-}
-
-.MovieName {
+.Trending {
   font-size: 40px;
   line-height: 50px;
   font-family: Verdana, sans-serif;
@@ -76,7 +9,7 @@
   text-transform: uppercase;
   text-align: center;
 }
-.MovieName:before {
+.Trending:before {
   content: '';
   position: absolute;
   filter: blur(10px);
@@ -115,7 +48,7 @@
   }
 }
 @media (max-width: 690px) {
-  .MovieName {
+  .Trending {
     font-size: 20px;
   }
 }

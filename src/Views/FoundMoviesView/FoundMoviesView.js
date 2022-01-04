@@ -1,8 +1,8 @@
-import Gallery from '../../Components/Gallery/Gallery';
-import s from './FoundMoviesView.module.css';
-import Button from '../../Components/Button/Button';
 import PropTypes from 'prop-types';
 import { BiChevronUpSquare } from 'react-icons/bi';
+import s from './FoundMoviesView.module.css';
+import Gallery from '../../Components/Gallery/Gallery';
+import Button from '../../Components/Button/Button';
 export default function FoundMoviesView({ movies, loadMore, isAvailableMore }) {
   const scrollUp = () => {
     window.scrollTo({

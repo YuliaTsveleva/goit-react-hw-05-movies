@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import s from './Navigation.module.css';
 import { BiHomeAlt } from 'react-icons/bi';
 import { BiFilm } from 'react-icons/bi';
+import s from './Navigation.module.css';
 
 export default function Navigation() {
   return (

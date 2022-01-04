@@ -1,10 +1,9 @@
 .ReviewWrapper {
-  /* display: flex; */
   padding: 10px;
 }
 
-.ReviewWrapper:not(:last-child){
-    margin-bottom: 10px;
+.ReviewWrapper:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 .Author {
@@ -18,11 +17,11 @@
   text-align: left;
 }
 
-.ReadMoreButton{
-    display: inline;
-    color:rgb(50, 77, 199);
-    font-style: italic;
-    border:none;
-    background-color: transparent;
-    cursor: pointer;
+.ReadMoreButton {
+  display: inline;
+  color: rgb(50, 77, 199);
+  font-style: italic;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

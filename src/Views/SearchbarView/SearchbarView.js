@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import s from './SearchbarView.module.css';
-import { BiSearchAlt } from 'react-icons/bi';
-import FoundMoviesView from '../FoundMoviesView/FoundMoviesView';
-import api from '../../Services/ApiService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BiSearchAlt } from 'react-icons/bi';
+import s from './SearchbarView.module.css';
+import api from '../../Services/ApiService';
+import FoundMoviesView from '../FoundMoviesView/FoundMoviesView';
 import Loader from '../../Components/Loader/Loader';
 
 export default function SearchBar() {

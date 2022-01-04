@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import {
   useParams,
   NavLink,
@@ -7,13 +7,18 @@ import {
   useLocation,
   useHistory,
 } from 'react-router-dom';
-import api from '../../Services/ApiService';
 import { BiGroup, BiMessageAltDetail, BiArrowFromBottom } from 'react-icons/bi';
 import s from './MovieDetailsView.module.css';
+import api from '../../Services/ApiService';
 import Loader from '../../Components/Loader/Loader';
-import Cast from '../../Components/Cast/Cast';
-import Reviews from '../../Components/Reviews/Reviews';
 import noImage from '../../images/no-image.svg';
+
+const Cast = lazy(() =>
+  import('../../Components/Cast/Cast' /* webpackChunkName: "Cast" */),
+);
+const Reviews = lazy(() =>
+  import('../../Components/Reviews/Reviews' /* webpackChunkName: "Reviews" */),
+);
 
 export default function MovieDetailsView() {
   const history = useHistory();
@@ -62,10 +67,7 @@ export default function MovieDetailsView() {
             }
             onClick={onGoBack}
           >
-            <BiArrowFromBottom
-              size="30"
-              // className={label === 'search' ? s.BackToSearch : s.BackToHome}
-            />
+            <BiArrowFromBottom size="30" />
           </button>
           <div className={s.MovieDetails}>
             <h1 className={s.MovieName}>
@@ -144,12 +146,14 @@ export default function MovieDetailsView() {
               </div>
             </div>
           </div>
-          <Route path="/movies/:slug/cast">
-            <Cast />
-          </Route>
-          <Route path="/movies/:slug/reviews">
-            <Reviews />
-          </Route>
+          <Suspense fallback={<Loader />}>
+            <Route path="/movies/:slug/cast">
+              <Cast />
+            </Route>
+            <Route path="/movies/:slug/reviews">
+              <Reviews />
+            </Route>
+          </Suspense>
         </>
       )}
     </>

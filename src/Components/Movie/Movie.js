@@ -3,8 +3,8 @@ import s from './Movie.module.css';
 import PropTypes from 'prop-types';
 import { BiLike } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import noImage from '../../images/no-image.svg';
 import slugify from 'slugify';
+import noImage from '../../images/no-image.svg';
 
 export default function Movie({ id, title, src, date, vote }) {
   const location = useLocation();
