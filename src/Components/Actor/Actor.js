@@ -1,4 +1,5 @@
 import s from './Actor.module.css';
+import PropTypes from 'prop-types';
 import noImage from '../../images/no-image.svg';
 
 export default function Actor({ name, src }) {
@@ -14,3 +15,8 @@ export default function Actor({ name, src }) {
     </li>
   );
 }
+
+Actor.propTypes = {
+  name: PropTypes.string,
+  src: PropTypes.string,
+};

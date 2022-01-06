@@ -47,7 +47,6 @@ export default function MovieDetailsView() {
   const onGoBack = () => {
     if (startLocation.current.state) {
       const search = startLocation.current.state.from.search;
-      // const pathname = startLocation.current.state.from.pathname;
       history.push(search ? '/movies' + search : '/');
     } else {
       history.push('/');

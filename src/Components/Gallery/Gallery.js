@@ -22,5 +22,14 @@ export default function Gallery({ movies }) {
 }
 
 Gallery.propTypes = {
-  movies: PropTypes.array,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      original_title: PropTypes.string,
+      original_name: PropTypes.string,
+      poster_path: PropTypes.string,
+      backdrop_path: PropTypes.string,
+      vote_average: PropTypes.number,
+    }),
+  ),
 };
